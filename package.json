@@ -1,0 +1,23 @@
+{
+  "name": "schemarc",
+  "version": "0.0.1",
+  "description": "schema manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Soldy/schemarc.git"
+  },
+  "keywords": [],
+  "author": "Soldy <npmjs@gidigi.com> (http://gidigi.com)",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Soldy/schemarc/issues"
+  },
+  "homepage": "https://github.com/Soldy/schemarc#readme",
+  "devDependencies": {
+    "nanoTest": "^0.9.9-beta17c"
+  }
+}

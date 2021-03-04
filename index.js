@@ -9,46 +9,42 @@ const typeHardening =  new (require('typehardeningrc')).base();
 const schemaBase=function(schemaIn){
     this.check = function(name, value){
         if (
-            (typeof name === 'undefined')||
+            (typeof name !== 'string')||
             (typeof value === 'undefined')||
-            (typeof schema[name] === 'undefined')
+            (typeof _schema[name] === 'undefined')
         )
             return false;
-        return check(name, value);
+        return _check(name, value);
     }
     this.getOne = function(){
-        return getOne();
+        return _getOne();
     }
     this.get = function(name){
         if (
             (typeof name === 'undefined')||
-            (typeof schema[name] === 'undefined')
+            (typeof _schema[name] === 'undefined')
         )
            return false;
-        return get(name);
+        return _get(name);
 
     }
-    const check = function(name, value){
-        if(typeHardening.check(schema[name], value) === false)
+    const _check = function(name, value){
+        if(typeHardening.check(_schema[name], value) === false)
             return false;
         return true;
     }
-    const getOne = function(){
+    const _getOne = function(){
         let out = [];
-        for (let i in schema)
+        for (let i in _schema)
             out[i] = get(i);
         return out;
     }
-    const get = function(name){
-        if (typeof schema[name]['default'] === 'undefined')
+    const _get = function(name){
+        if (typeof _schema[name]['default'] === 'undefined')
             return '';
-        return schema[name]['default'];
+        return _schema[name]['default'];
     }
-    const noDefault = function(){
-
-    }
-
-    const schema = schemaIn;
+    const _schema = schemaIn;
 }
 
 

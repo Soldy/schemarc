@@ -2,7 +2,8 @@
  *  @Soldy\schemarc\2021.02.18\GPL3
  */
 'use strict';
-const typeHardening =  new (require('typehardeningrc')).base();
+const $typeHardening =  new (require('typehardeningrc')).base();
+const $clonerc = new (require('clonerc')).base();
 /*
  * @prototype
  */
@@ -16,8 +17,8 @@ const schemaBase=function(schemaIn){
             return false;
         return _check(name, value);
     }
-    this.getOne = function(){
-        return _getOne();
+    this.all = function(){
+        return _all();
     }
     this.get = function(name){
         if (
@@ -29,20 +30,20 @@ const schemaBase=function(schemaIn){
 
     }
     const _check = function(name, value){
-        if(typeHardening.check(_schema[name], value) === false)
+        if($typeHardening.check(_schema[name], value) === false)
             return false;
         return true;
     }
-    const _getOne = function(){
+    const _all = function(){
         let out = [];
         for (let i in _schema)
-            out[i] = get(i);
+            out[i] = _get(i);
         return out;
     }
     const _get = function(name){
         if (typeof _schema[name]['default'] === 'undefined')
-            return '';
-        return _schema[name]['default'];
+            return undefined;
+        return $clone.clone(_schema[name]['default']);
     }
     const _schema = schemaIn;
 }

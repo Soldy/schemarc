@@ -1,6 +1,6 @@
 {
   "name": "schemarc",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "schema manager",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Soldy/schemarc#readme",
   "devDependencies": {
     "nanoTest": "^0.9.9-beta17c"
+  },
+  "dependencies": {
+    "clonerc": "0.0.1"
   }
 }
